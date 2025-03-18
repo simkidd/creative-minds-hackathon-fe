@@ -40,7 +40,7 @@ const HowItWorks = () => {
           {items.map((item, i) => (
             <div
               key={i}
-              className="md:px-[79px] py-[54px] bg-[#F8F8F8] rounded-md flex items-center flex-col"
+              className="md:px-[40px] py-[54px] bg-[#F8F8F8] rounded-md flex items-center flex-col"
             >
               <div className="bg-white size-[60px] rounded-full flex items-center justify-center mb-[25px]">
                 <item.icon className={item.className} />
