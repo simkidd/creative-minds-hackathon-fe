@@ -1,3 +1,4 @@
+import GallerySection from "@/components/home/GallerySection";
 import GetStarted from "@/components/home/GetStarted";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -15,6 +16,7 @@ const Home = () => {
 
       <div>
         <HeroSection />
+        <GallerySection />
         <HowItWorks />
         <SuccessStory />
         <StayUpdated />
