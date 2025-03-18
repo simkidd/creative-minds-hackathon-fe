@@ -9,6 +9,19 @@ import { PopoverClose } from "@radix-ui/react-popover";
 import LogoutButton from "../shared/LogoutButton";
 import { ArrowDown2 } from "iconsax-react";
 
+interface IMenu {
+  label: string;
+  to: string;
+}
+
+const menuList: IMenu[] = [
+  { label: "Home", to: "/" },
+  { label: "Resources", to: "/resources" },
+  { label: "Support", to: "/support" },
+  { label: "About Us", to: "/about-us" },
+  { label: "Contact Us", to: "/contact-us" },
+];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
@@ -25,66 +38,20 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center justify-around poppins-regular">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-black hover:text-primary ${
-                  isActive ? "text-primary font-bold" : ""
-                }`
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/resources"
-              className={({ isActive }) =>
-                `text-black hover:text-primary ${
-                  isActive ? "text-primary font-bold" : ""
-                }`
-              }
-            >
-              Resources
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/support"
-              className={({ isActive }) =>
-                `text-black hover:text-primary ${
-                  isActive ? "text-primary font-bold" : ""
-                }`
-              }
-            >
-              Support
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about-us"
-              className={({ isActive }) =>
-                `text-sm text-black hover:text-primary block ${
-                  isActive ? "text-primary font-bold" : ""
-                }`
-              }
-            >
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) =>
-                `text-sm text-black hover:text-primary ${
-                  isActive ? "text-primary font-bold" : ""
-                }`
-              }
-            >
-              Contact Us
-            </NavLink>
-          </li>
+          {menuList.map((menu, i) => (
+            <li key={i}>
+              <NavLink
+                to={menu.to}
+                className={({ isActive }) =>
+                  `text-black hover:text-primary ${
+                    isActive ? "text-primary font-semibold" : ""
+                  }`
+                }
+              >
+                {menu.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         {/* Volunteer Button */}
@@ -169,81 +136,66 @@ const Header = () => {
         >
           <div className="flex flex-col h-full w-full px-4 py-8">
             <ul className="flex flex-col space-y-10 poppins-regular pt-10">
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `text-black hover:text-primary ${
-                      isActive ? "text-primary font-bold" : ""
-                    }`
-                  }
-                  onClick={toggleMenu}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/resources"
-                  className={({ isActive }) =>
-                    `text-black hover:text-primary ${
-                      isActive ? "text-primary font-bold" : ""
-                    }`
-                  }
-                  onClick={toggleMenu}
-                >
-                  Resources
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/support"
-                  className={({ isActive }) =>
-                    `text-black hover:text-primary ${
-                      isActive ? "text-primary font-bold" : ""
-                    }`
-                  }
-                  onClick={toggleMenu}
-                >
-                  Support
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about-us"
-                  className={({ isActive }) =>
-                    `text-sm text-black hover:text-primary block ${
-                      isActive ? "text-primary font-bold" : ""
-                    }`
-                  }
-                  onClick={toggleMenu}
-                >
-                  About Us
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact-us"
-                  className={({ isActive }) =>
-                    `text-sm text-black hover:text-primary ${
-                      isActive ? "text-primary font-bold" : ""
-                    }`
-                  }
-                  onClick={toggleMenu}
-                >
-                  Contact Us
-                </NavLink>
-              </li>
+              {menuList.map((menu, i) => (
+                <li key={i}>
+                  <NavLink
+                    to={menu.to}
+                    className={({ isActive }) =>
+                      `text-black hover:text-primary ${
+                        isActive ? "text-primary font-semibold" : ""
+                      }`
+                    }
+                    onClick={toggleMenu}
+                  >
+                    {menu.label}
+                  </NavLink>
+                </li>
+              ))}
+
+              {user && (
+                <>
+                  <li>
+                    <NavLink
+                      to={"/profile"}
+                      className={({ isActive }) =>
+                        `text-black hover:text-primary ${
+                          isActive ? "text-primary font-semibold" : ""
+                        }`
+                      }
+                      onClick={toggleMenu}
+                    >
+                      Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/volunteer"}
+                      className={({ isActive }) =>
+                        `text-black hover:text-primary ${
+                          isActive ? "text-primary font-semibold" : ""
+                        }`
+                      }
+                      onClick={toggleMenu}
+                    >
+                      Volunteer
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
             <div className="mt-auto">
-              <Link to="/auth/login">
-                <Button
-                  size={"lg"}
-                  className="w-full cursor-pointer poppins-regular py-4 rounded-md"
-                >
-                  Volunteer
-                </Button>
-              </Link>
+              {!user ? (
+                <Link to="/auth/login">
+                  <Button
+                    size={"lg"}
+                    className="w-full cursor-pointer poppins-regular py-4 rounded-md"
+                  >
+                    Volunteer
+                  </Button>
+                </Link>
+              ) : (
+                <LogoutButton />
+              )}
             </div>
           </div>
         </div>

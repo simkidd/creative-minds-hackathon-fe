@@ -8,6 +8,7 @@ import Contact from "./pages/contact";
 import Courses from "./pages/course";
 import CourseDetail from "./pages/course/details";
 import Home from "./pages/home";
+import Resources from "./pages/resources";
 // import JobListings from "./pages/job";
 // import JobDetails from "./pages/job/details";
 
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "about-us", element: <About /> },
       { path: "contact-us", element: <Contact /> },
+      { path: "resources", element: <Resources /> },
       { path: "courses", element: <Courses /> },
       {
         path: "courses/:courseId",
