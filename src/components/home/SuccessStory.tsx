@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/swiper-bundle.min.css";
+import "swiper/swiper-bundle.css";
 
 interface IStory {
   name: string;
