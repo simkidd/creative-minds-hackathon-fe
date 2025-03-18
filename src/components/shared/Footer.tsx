@@ -1,5 +1,6 @@
-import { ArrowRight } from "iconsax-react";
+import { ArrowRight, Facebook, Instagram, Whatsapp } from "iconsax-react";
 import { Link } from "react-router-dom";
+import { FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const getYear = () => {
@@ -116,6 +117,32 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
+
+              <div className="mt-6 flex items-center gap-2">
+                <p>Follow Us:</p>
+                <ul className="inline-flex gap-2">
+                  <li>
+                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                      <Facebook variant="Bold" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                      <FaTwitter size={24} />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                      <Instagram variant="Bold" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                      <Whatsapp variant="Bold" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

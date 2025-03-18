@@ -3,7 +3,7 @@ import Image3 from "@/assets/images/people/group-african-kids-learning-together_
 import Image2 from "@/assets/images/people/smiling-pupil-sitting-her-desk_13339-140893.png";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useRef } from "react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/swiper-bundle.css";
@@ -46,6 +46,7 @@ const SuccessStory = () => {
   // Refs for custom navigation buttons
   const prevButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
+
   return (
     <section className="w-full">
       <div className="container mx-auto px-4 pt-0 pb-[150px]">
@@ -59,16 +60,22 @@ const SuccessStory = () => {
         <div className="mt-12 w-full relative">
           <Swiper
             spaceBetween={10}
-            modules={[Navigation]}
+            effect={"fade"}
+            modules={[Navigation, EffectFade, Autoplay]}
             navigation={{
               nextEl: nextButtonRef.current,
               prevEl: prevButtonRef.current,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
             className="w-full h-full"
           >
             {stories.map((story, i) => (
               <SwiperSlide key={i}>
-                <div className="grid grid-cols-1 md:grid-cols-[350px_auto] lg:grid-cols-[450px_auto] gap-8 lg:gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-[350px_auto] lg:grid-cols-[450px_auto] gap-8 lg:gap-2 bg-white">
                   <div className="aspect-square overflow-hidden rounded-xl">
                     <img
                       src={story.image}
