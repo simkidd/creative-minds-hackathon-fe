@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
+import Logo from "../shared/Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,11 +14,7 @@ const Header = () => {
     <div className="bg-white shadow-[0px_4px_4px_0px_#C4C4C440] sticky top-0 left-0 z-30">
       <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-[25%_50%_25%] lg:h-[100px] md:h-[80px] h-[60px] relative">
         {/* Logo */}
-        <div className="flex items-center">
-          <h4 className="lg:text-3xl text-2xl text-primary poppins-extrabold">
-            edufree<span className="text-secondary">4all.</span>
-          </h4>
-        </div>
+        <Logo />
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center justify-around poppins-regular">
@@ -85,12 +82,14 @@ const Header = () => {
 
         {/* Volunteer Button */}
         <div className="hidden lg:flex items-center justify-end">
-          <Button
-            size={"lg"}
-            className="cursor-pointer poppins-regular py-4 px-10 rounded-md"
-          >
-            Volunteer
-          </Button>
+          <Link to="/auth/login">
+            <Button
+              size={"lg"}
+              className="cursor-pointer poppins-regular py-4 px-10 rounded-md"
+            >
+              Volunteer
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -192,12 +191,14 @@ const Header = () => {
               </li>
             </ul>
             <div className="mt-auto">
-              <Button
-                size={"lg"}
-                className="w-full cursor-pointer poppins-regular py-4 rounded-md"
-              >
-                Volunteer
-              </Button>
+              <Link to="/auth/login">
+                <Button
+                  size={"lg"}
+                  className="w-full cursor-pointer poppins-regular py-4 rounded-md"
+                >
+                  Volunteer
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

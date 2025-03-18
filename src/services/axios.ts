@@ -3,7 +3,7 @@ import axios from "axios";
 import cookies from "js-cookie";
 
 export const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+  import.meta.env.VITE_API_URL || "";
 
 // Create Axios instance
 const instance = axios.create({
