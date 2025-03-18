@@ -3,10 +3,11 @@ import Image3 from "@/assets/images/people/group-african-kids-learning-together_
 import Image2 from "@/assets/images/people/smiling-pupil-sitting-her-desk_13339-140893.png";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useRef } from "react";
-import { Navigation } from "swiper/modules";
+import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/swiper-bundle.min.css";
+import "swiper/css";
+import "swiper/css/bundle";
 
 interface IStory {
   name: string;
