@@ -130,7 +130,7 @@ const Header = () => {
 
         {/* Mobile Menu (Slides from Bottom) */}
         <div
-          className={`fixed inset-x-0 bottom-0 bg-white z-50 transform transition-transform duration-300 ease-in-out h-[calc(100dvh-60px)] ${
+          className={`fixed lg:hidden inset-x-0 bottom-0 bg-white z-50 transform transition-transform duration-300 ease-in-out h-[calc(100dvh-60px)] ${
             isMenuOpen ? "translate-y-0" : "translate-y-full"
           }`}
         >

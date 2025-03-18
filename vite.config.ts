@@ -11,11 +11,18 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg", "vite.svg"],
+      includeAssets: [
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "mask-icon.svg",
+        "vite.svg",
+        "edufree4all.svg",
+      ],
       manifest: {
-        name: "Test App",
-        short_name: "Test App",
-        description: "A platform for inclusive, quality education in Nigeria.",
+        name: "edufree4all",
+        short_name: "edufree4all",
+        description:
+          "Access free learning materials, find volunteers, and get support for your education journey.",
         theme_color: "#ffffff",
         icons: [
           {
