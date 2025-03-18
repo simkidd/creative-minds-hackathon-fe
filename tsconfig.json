@@ -7,8 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "swiper/*": ["node_modules/swiper/*"]
+      "@/*": ["./src/*"]
     },
     "types": ["vite-plugin-pwa/client"]
   }
