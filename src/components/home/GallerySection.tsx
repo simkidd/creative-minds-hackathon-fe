@@ -8,32 +8,32 @@ const GallerySection = () => {
   return (
     <section className="w-full">
       <div className="container mx-auto px-4 pt-10 py-[150px]">
-        <div className="grid grid-cols-5 grid-rows-7 gap-6 h-[455px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 grid-rows-5 md:grid-rows-7 gap-4 h-[455px]">
           <img
             src={Image1}
             alt="Child 1"
-            className="h-full w-full object-cover row-start-2 row-end-8"
+            className="h-full w-full object-cover row-start-2 row-end-6 md:row-start-2 md:row-end-8"
           />
           <img
             src={Image2}
             alt="Child 2"
-            className="h-full w-full object-cover row-start-1 row-end-7"
+            className="h-full w-full object-cover row-start-1 row-end-5 md:row-start-1 md:row-end-7"
           />
           <img
             src={Image3}
             alt="Child 3"
-            className="h-full w-full object-cover row-start-2 row-end-8"
+            className="h-full w-full object-cover row-start-2 row-end-6 md:row-start-2 md:row-end-8"
           />
 
           <img
             src={Image4}
             alt="Child 4"
-            className="h-full w-full object-cover object-left row-start-1 row-end-7"
+            className="h-full w-full object-cover object-left row-start-1 row-end-5 md:row-start-1 md:row-end-7"
           />
           <img
             src={Image5}
             alt="Child 5"
-            className="h-full w-full object-cover object-center row-start-2 row-end-8"
+            className="h-full w-full object-cover object-center row-start-2 row-end-6 md:row-start-2 md:row-end-8"
           />
         </div>
       </div>
