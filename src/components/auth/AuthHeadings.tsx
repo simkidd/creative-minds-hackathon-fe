@@ -7,8 +7,8 @@ const AuthHeadings = ({
 }) => {
   return (
     <div className="mb-[52px]">
-      <h2 className="poppins-bold text-[28px] pb-2">{heading}</h2>
-      <p className="poppins-regular text-lg text-gray-400">{subHeading}</p>
+      <h2 className="poppins-bold text-2xl pb-2">{heading}</h2>
+      <p className="poppins-regular text-gray-400">{subHeading}</p>
     </div>
   );
 };

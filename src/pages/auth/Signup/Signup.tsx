@@ -10,7 +10,10 @@ const Signup = () => {
         description="Create a new EduConnect account to get started."
       />
 
-      <AuthHeadings heading="Sign In" subHeading="Sign in with your details" />
+      <AuthHeadings
+        heading="Sign Up to Teach / Mentor"
+        subHeading="Sign up to start teaching / mentoring on edufree4all"
+      />
 
       <SignUpForm />
     </div>

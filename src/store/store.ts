@@ -2,16 +2,19 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PERSIST_STORE_NAME } from "@/constants/app.constant";
+import authReducer from "./features/auth/auth.slice";
 
 // Configuration for persisting state
 const persistConfig = {
   key: PERSIST_STORE_NAME,
   storage,
-  whitelist: [], // Only persist these slices
+  whitelist: ["auth"], // Only persist these slices
 };
 
 // Combine reducers
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  auth: authReducer,
+});
 
 // Wrap reducers with persistReducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);

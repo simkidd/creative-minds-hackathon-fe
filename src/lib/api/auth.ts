@@ -38,3 +38,12 @@ export const loginUser = async (data: LoginFormData) => {
     handleError(error);
   }
 };
+
+export const fetchUser = async () => {
+  try {
+    const res = await instance.get(`/auth/me`);
+    return handleResponse(res);
+  } catch (error) {
+    handleError(error);
+  }
+};

@@ -98,7 +98,7 @@ const LoginForm = () => {
           <Button
             size={"lg"}
             type="submit"
-            className="w-full mb-4 text-sm"
+            className="w-full mb-4 text-sm cursor-pointer"
             disabled={loginMutation.isPending}
           >
             {loginMutation.isPending && <LoadingSpinner className="mr-2" />}

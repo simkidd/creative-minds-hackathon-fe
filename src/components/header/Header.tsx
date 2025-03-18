@@ -2,9 +2,16 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import Logo from "../shared/Logo";
+import { useAppSelector } from "@/store/hooks";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { PopoverClose } from "@radix-ui/react-popover";
+import LogoutButton from "../shared/LogoutButton";
+import { ArrowDown2 } from "iconsax-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAppSelector((state) => state.auth);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -82,14 +89,52 @@ const Header = () => {
 
         {/* Volunteer Button */}
         <div className="hidden lg:flex items-center justify-end">
-          <Link to="/auth/login">
-            <Button
-              size={"lg"}
-              className="cursor-pointer poppins-regular py-4 px-10 rounded-md"
-            >
-              Volunteer
-            </Button>
-          </Link>
+          {!user ? (
+            <Link to="/auth/login">
+              <Button
+                size={"lg"}
+                className="cursor-pointer poppins-regular py-4 px-10 rounded-md"
+              >
+                Volunteer
+              </Button>
+            </Link>
+          ) : (
+            <Popover>
+              <PopoverTrigger>
+                <button className="flex items-center cursor-pointer">
+                  <Avatar className="size-10 poppins-semibold mr-1">
+                    <AvatarImage src={user?.image} />
+                    <AvatarFallback>{user?.firstName[0]}</AvatarFallback>
+                  </Avatar>
+                  <span className="">Hello, {user?.firstName}</span>
+                  <ArrowDown2 size={16} className="ml-2" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[208px] p-2.5 px-1.5">
+                <div className="flex flex-col space-y-1 poppins-regular">
+                  <PopoverClose asChild>
+                    <Link
+                      to="#"
+                      className="text-sm flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-sm p-2 duration-300 hover:bg-primary/30 hover:bg-opacity-20"
+                    >
+                      Profile
+                    </Link>
+                  </PopoverClose>
+                  <PopoverClose asChild>
+                    <Link
+                      to="#"
+                      className="text-sm flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-sm p-2 duration-300 hover:bg-primary/30 hover:bg-opacity-20"
+                    >
+                      Volunteer
+                    </Link>
+                  </PopoverClose>
+                  <PopoverClose asChild>
+                    <LogoutButton />
+                  </PopoverClose>
+                </div>
+              </PopoverContent>
+            </Popover>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
