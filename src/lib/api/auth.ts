@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { LoginFormData } from "@/components/auth/LoginForm";
+import { SignupFormData } from "@/components/auth/SignUpForm";
 import instance from "@/services/axios";
 
 // Handle responses and errors
@@ -20,10 +21,14 @@ const handleError = (error: any) => {
   }
 };
 
-// export const signUpUser = async (data: SignUpFormData) => {
-//   const res = await instance.post(`/auth/sign-up`, data);
-//   return res.data;
-// };
+export const signUpUser = async (data: SignupFormData) => {
+  try {
+    const res = await instance.post(`/auth/signup`, data);
+    return handleResponse(res);
+  } catch (error) {
+    handleError(error);
+  }
+};
 
 export const loginUser = async (data: LoginFormData) => {
   try {

@@ -1,14 +1,12 @@
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useLogin } from "@/hooks/useLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { loginUser } from "@/lib/api/auth";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { EyeIcon, EyeClosed } from "lucide-react";
-import { Button } from "../ui/button";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { z } from "zod";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import { Button } from "../ui/button";
 
 const schema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -21,7 +19,7 @@ export type LoginFormData = z.infer<typeof schema>;
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+  const { loginMutation } = useLogin();
 
   const {
     register,
@@ -29,23 +27,6 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(schema),
-  });
-
-  const loginMutation = useMutation({
-    mutationFn: loginUser,
-    onSuccess: (data) => {
-      toast.success(data?.message);
-      // cookies.set(TOKEN_NAME, data?.token);
-      // cookies.set(USER_DETAILS, JSON.stringify(data?.user));
-      // dispatch(loginSuccess({ user: data.user, token: data.token }));
-      navigate("/");
-    },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onError: (error: any) => {
-      console.log("error", error?.response?.data?.error);
-      // dispatch(loginFailure(error?.response?.data?.error || "Login failed"));
-      toast.error(error?.response?.data?.error || error?.message);
-    },
   });
 
   const onSubmit = (data: LoginFormData) => {
@@ -130,7 +111,7 @@ const LoginForm = () => {
             Don't have an account?
           </label>
           <Link
-            to="/"
+            to="/auth/signup"
             className="text-primary hover:underline hover:underline-offset-2"
           >
             Sign Up

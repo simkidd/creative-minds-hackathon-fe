@@ -1,3 +1,5 @@
+import AuthHeadings from "@/components/auth/AuthHeadings";
+import SignUpForm from "@/components/auth/SignUpForm";
 import HelmetComp from "@/components/shared/HelmetComp";
 
 const Signup = () => {
@@ -8,7 +10,9 @@ const Signup = () => {
         description="Create a new EduConnect account to get started."
       />
 
-      <h1>Signup</h1>
+      <AuthHeadings heading="Sign In" subHeading="Sign in with your details" />
+
+      <SignUpForm />
     </div>
   );
 };

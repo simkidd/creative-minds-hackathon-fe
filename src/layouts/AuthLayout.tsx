@@ -16,11 +16,11 @@ const AuthLayout = () => {
         </div>
       </div>
       <div className="col-span-1 lg:col-span-3 h-dvh overflow-y-auto">
-        <div className="h-full mb-10">
+        <div className="h-full ">
           <div className="px-4 lg:px-[58px] pt-[26px] mb-[43px]">
             <Logo />
           </div>
-          <main className="px-4 lg:px-[58px]">
+          <main className="px-4 lg:px-[58px] pb-10">
             <Outlet />
           </main>
         </div>
