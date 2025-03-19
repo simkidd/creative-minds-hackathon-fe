@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Button } from "../ui/button";
-import Logo from "../shared/Logo";
+import { Button } from "../../ui/button";
+import Logo from "../Logo";
 import { useAppSelector } from "@/store/hooks";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { PopoverClose } from "@radix-ui/react-popover";
-import LogoutButton from "../shared/LogoutButton";
+import LogoutButton from "../LogoutButton";
 import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 import LogoImg from "@/assets/logos/edufreelogo.png";
 
