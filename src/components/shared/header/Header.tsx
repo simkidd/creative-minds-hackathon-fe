@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Button } from "../ui/button";
-import Logo from "../shared/Logo";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Button } from "../../ui/button";
+import Logo from "../Logo";
 import { useAppSelector } from "@/store/hooks";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { PopoverClose } from "@radix-ui/react-popover";
-import LogoutButton from "../shared/LogoutButton";
+import LogoutButton from "../LogoutButton";
 import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 import LogoImg from "@/assets/logos/edufreelogo.png";
 
@@ -42,6 +42,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const { pathname } = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -61,11 +62,18 @@ const Header = () => {
         <ul className="hidden lg:flex items-center justify-around poppins-regular">
           {menuList.map((menu, i) => {
             if (menu.subItems) {
+              const isActive = menu.subItems.some(
+                (subItem) => pathname === subItem.to
+              );
               return (
                 <li key={i}>
                   <Popover>
                     <PopoverTrigger>
-                      <button className="text-black hover:text-primary focus:outline-none">
+                      <button
+                        className={`text-black cursor-pointer hover:text-primary focus:outline-none ${
+                          isActive ? "text-primary font-semibold" : ""
+                        }`}
+                      >
                         {menu.label}{" "}
                         <ArrowDown2 size={16} className="inline-block ml-1" />
                       </button>
@@ -76,7 +84,11 @@ const Header = () => {
                           <PopoverClose asChild key={j}>
                             <Link
                               to={subItem.to}
-                              className="text-sm p-2 hover:bg-primary/10 rounded-sm"
+                              className={`text-sm p-2 hover:bg-primary/10 rounded-sm ${
+                                location.pathname === subItem.to
+                                  ? "bg-primary/10 text-primary font-semibold"
+                                  : ""
+                              }`}
                             >
                               {subItem.label}
                             </Link>
