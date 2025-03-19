@@ -7,12 +7,14 @@ interface ResourceCardProps {
 const ResourceCard = ({ resource }: ResourceCardProps) => {
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-      <div className="aspect-square bg-gray-100">
-        <img
-          src={resource.image}
-          alt={resource.title}
-          className="w-full h-full object-cover"
-        />
+      <div className="p-4 pb-0">
+        <div className="aspect-square rounded-md bg-gray-100">
+          <img
+            src={resource.image}
+            alt={resource.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
