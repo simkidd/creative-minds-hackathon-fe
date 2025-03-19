@@ -5,12 +5,12 @@ import About from "./pages/about";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Contact from "./pages/contact";
-import Courses from "./pages/course";
-import CourseDetail from "./pages/course/details";
 import Home from "./pages/home";
-import Resources from "./pages/resources";
-import Volunteer from "./pages/volunteer";
 import Profile from "./pages/profile";
+import Resources from "./pages/resources";
+import DigitalLiteracy from "./pages/resources/digital-literacy";
+import Help from "./pages/support/help";
+import Volunteer from "./pages/support/volunteer";
 // import JobListings from "./pages/job";
 // import JobDetails from "./pages/job/details";
 
@@ -24,11 +24,9 @@ export const router = createBrowserRouter([
       { path: "about-us", element: <About /> },
       { path: "contact-us", element: <Contact /> },
       { path: "resources", element: <Resources /> },
-      { path: "courses", element: <Courses /> },
-      {
-        path: "courses/:courseId",
-        element: <CourseDetail />,
-      },
+      { path: "resources/digital-literacy", element: <DigitalLiteracy /> },
+      { path: "support/help", element: <Help /> },
+      { path: "support/volunteer", element: <Volunteer /> },
     ],
   },
   {
