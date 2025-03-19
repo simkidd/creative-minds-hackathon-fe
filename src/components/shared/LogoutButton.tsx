@@ -1,5 +1,6 @@
-import React from "react";
 import useLogout from "@/hooks/useLogout";
+import { LogoutCurve } from "iconsax-react";
+import React from "react";
 import { Button } from "../ui/button";
 
 const LogoutButton: React.FC = () => {
@@ -9,8 +10,9 @@ const LogoutButton: React.FC = () => {
     <Button
       variant={"destructive"}
       onClick={logout}
-      className="cursor-pointer w-full text-sm"
+      className="cursor-pointer w-full text-sm justify-start"
     >
+      <LogoutCurve />
       Logout
     </Button>
   );

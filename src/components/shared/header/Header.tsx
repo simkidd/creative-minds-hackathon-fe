@@ -1,14 +1,14 @@
+import LogoImg from "@/assets/logos/edufreelogo.png";
+import { useAppSelector } from "@/store/hooks";
+import { PopoverClose } from "@radix-ui/react-popover";
+import { ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Button } from "../../ui/button";
-import Logo from "../Logo";
-import { useAppSelector } from "@/store/hooks";
-import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { PopoverClose } from "@radix-ui/react-popover";
+import { Button } from "../../ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
+import Logo from "../Logo";
 import LogoutButton from "../LogoutButton";
-import { ArrowDown2, ArrowUp2 } from "iconsax-react";
-import LogoImg from "@/assets/logos/edufreelogo.png";
 
 interface IMenu {
   label: string;
@@ -147,6 +147,7 @@ const Header = () => {
                       to="#"
                       className="text-sm flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-sm p-2 duration-300 hover:bg-primary/30 hover:bg-opacity-20"
                     >
+                      <Profile size="18" />
                       Profile
                     </Link>
                   </PopoverClose>

@@ -101,7 +101,7 @@ const LoginForm = () => {
             className="w-full mb-4 text-sm cursor-pointer"
             disabled={loginMutation.isPending}
           >
-            {loginMutation.isPending && <LoadingSpinner className="mr-2" />}
+            {loginMutation.isPending && <LoadingSpinner className="mr-1" />}
             Login
           </Button>
         </div>
