@@ -16,7 +16,7 @@ const HeroSection = () => {
           </p>
 
           <div className="flex items-center justify-center gap-8 flex-col md:flex-row w-full">
-            <Link to={"/resources"}>
+            <Link to={"/resources"} className="w-full md:w-fit">
               <Button size={"lg"} className="cursor-pointer w-full md:w-fit">
                 Find Resources
               </Button>

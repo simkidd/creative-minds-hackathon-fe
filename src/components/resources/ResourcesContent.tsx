@@ -1,5 +1,6 @@
 import { IResource } from "@/interfaces/resource.interface";
 import ResourceCard from "./ResourceCard";
+import CustomPagination from "../shared/CustomPagination";
 
 const resources: IResource[] = [
   {
@@ -38,6 +39,24 @@ const resources: IResource[] = [
     format: "PDF",
     image: "https://via.placeholder.com/150",
   },
+  {
+    id: "5",
+    title: "Chemistry Reactions",
+    subject: "Chemistry",
+    language: "English",
+    gradeLevel: "SSS 2",
+    format: "PDF",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: "6",
+    title: "Physics Mechanics",
+    subject: "Physics",
+    language: "English",
+    gradeLevel: "SSS 3",
+    format: "PDF",
+    image: "https://via.placeholder.com/150",
+  },
 ];
 
 const ResourcesContent = () => {
@@ -48,6 +67,10 @@ const ResourcesContent = () => {
           {resources.map((resource) => (
             <ResourceCard key={resource.id} resource={resource} />
           ))}
+        </div>
+
+        <div className="w-full py-14">
+          <CustomPagination />
         </div>
       </div>
     </section>
