@@ -1,6 +1,7 @@
 import { ArrowRight, Facebook, Instagram, Whatsapp } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { FaTwitter } from "react-icons/fa6";
+import LogoImg from "@/assets/logos/edufreelogo1.png";
 
 const Footer = () => {
   const getYear = () => {
@@ -11,9 +12,13 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-6 py-16 gap-10">
           <div className="col-span-1 lg:col-span-2">
-            <h4 className="lg:text-3xl text-2xl text-white poppins-extrabold">
-              edufree<span className="text-secondary">4all.</span>
-            </h4>
+            <div className="h-26 w-fit">
+              <img
+                src={LogoImg}
+                alt="edufree4all-logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
             <p className="py-3.5">
               edufree4all is a community-driven platform bridging the education
               gap in Nigeria by providing free resources, volunteer support, and
@@ -122,22 +127,34 @@ const Footer = () => {
                 <p>Follow Us:</p>
                 <ul className="inline-flex gap-2">
                   <li>
-                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                    <Link
+                      to="#"
+                      className="hover:text-secondary transition-all duration-300"
+                    >
                       <Facebook variant="Bold" />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                    <Link
+                      to="#"
+                      className="hover:text-secondary transition-all duration-300"
+                    >
                       <FaTwitter size={24} />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                    <Link
+                      to="#"
+                      className="hover:text-secondary transition-all duration-300"
+                    >
                       <Instagram variant="Bold" />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="hover:text-secondary transition-all duration-300">
+                    <Link
+                      to="#"
+                      className="hover:text-secondary transition-all duration-300"
+                    >
                       <Whatsapp variant="Bold" />
                     </Link>
                   </li>

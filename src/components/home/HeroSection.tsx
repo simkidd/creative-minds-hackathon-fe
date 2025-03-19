@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ArrowRight } from "iconsax-react";
 
@@ -15,9 +16,11 @@ const HeroSection = () => {
           </p>
 
           <div className="flex items-center justify-center gap-8 flex-col md:flex-row w-full">
-            <Button size={"lg"} className="cursor-pointer w-full md:w-fit">
-              Find Resources
-            </Button>
+            <Link to={"/resources"}>
+              <Button size={"lg"} className="cursor-pointer w-full md:w-fit">
+                Find Resources
+              </Button>
+            </Link>
             <Button
               size={"lg"}
               variant={"secondary"}

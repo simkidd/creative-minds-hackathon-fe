@@ -1,6 +1,6 @@
 const PageHeader = ({ title }: { title: string }) => {
   return (
-    <div className="bg-primary w-full h-[216px] relative overflow-hidden">
+    <div className="bg-primary w-full h-[180px] lg:h-[216px] relative overflow-hidden">
       <div className="container px-4 mx-auto flex items-center justify-center w-full h-full">
         <h1 className="text-white poppins-bold text-4xl">{title}</h1>
       </div>

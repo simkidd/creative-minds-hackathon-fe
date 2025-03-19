@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { PopoverClose } from "@radix-ui/react-popover";
 import LogoutButton from "../shared/LogoutButton";
 import { ArrowDown2 } from "iconsax-react";
+import LogoImg from "@/assets/logos/edufreelogo.png";
 
 interface IMenu {
   label: string;
@@ -134,7 +135,7 @@ const Header = () => {
             isMenuOpen ? "translate-y-0" : "translate-y-full"
           }`}
         >
-          <div className="flex flex-col h-full w-full px-4 py-8">
+          <div className="flex flex-col h-full w-full px-4 py-8 relative">
             <ul className="flex flex-col space-y-10 poppins-regular pt-10">
               {menuList.map((menu, i) => (
                 <li key={i}>
@@ -190,12 +191,21 @@ const Header = () => {
                     size={"lg"}
                     className="w-full cursor-pointer poppins-regular py-4 rounded-md"
                   >
-                    Volunteer
+                    Login / Signup
                   </Button>
                 </Link>
               ) : (
                 <LogoutButton />
               )}
+            </div>
+
+            {/* logo on background */}
+            <div className="absolute bottom-0 -right-24 h-[450px] opacity-10 pointer-events-none">
+              <img
+                src={LogoImg}
+                alt="logo-bg"
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </div>

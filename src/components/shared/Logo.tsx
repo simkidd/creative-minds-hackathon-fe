@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
+import LogoImg from "@/assets/logos/edufreelogo.png";
 
 const Logo = () => {
   return (
     <div className="flex items-center">
-      <Link to={"/"}>
-        <h4 className="lg:text-3xl text-2xl text-primary poppins-extrabold">
-          edufree<span className="text-secondary">4all.</span>
-        </h4>
+      <Link to={"/"} className="h-14 md:h-20">
+        <img src={LogoImg} alt="edufree4all-logo" className="w-full h-full object-contain" />
       </Link>
     </div>
   );
