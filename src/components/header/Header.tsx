@@ -7,18 +7,33 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { PopoverClose } from "@radix-ui/react-popover";
 import LogoutButton from "../shared/LogoutButton";
-import { ArrowDown2 } from "iconsax-react";
+import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 import LogoImg from "@/assets/logos/edufreelogo.png";
 
 interface IMenu {
   label: string;
   to: string;
+  subItems?: IMenu[];
 }
 
 const menuList: IMenu[] = [
   { label: "Home", to: "/" },
-  { label: "Resources", to: "/resources" },
-  { label: "Support", to: "/support" },
+  {
+    label: "Resources",
+    to: "/resources",
+    subItems: [
+      { label: "Find Resources", to: "/resources" },
+      { label: "Digital Literacy", to: "/resources/digital-literacy" },
+    ],
+  },
+  {
+    label: "Support",
+    to: "/support",
+    subItems: [
+      { label: "Request Help", to: "/support/help" },
+      { label: "Volunteer", to: "/support/volunteer" },
+    ],
+  },
   { label: "About Us", to: "/about-us" },
   { label: "Contact Us", to: "/contact-us" },
 ];
@@ -26,9 +41,14 @@ const menuList: IMenu[] = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleAccordion = (label: string) => {
+    setOpenAccordion((prev) => (prev === label ? null : label));
   };
 
   return (
@@ -39,20 +59,50 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center justify-around poppins-regular">
-          {menuList.map((menu, i) => (
-            <li key={i}>
-              <NavLink
-                to={menu.to}
-                className={({ isActive }) =>
-                  `text-black hover:text-primary ${
-                    isActive ? "text-primary font-semibold" : ""
-                  }`
-                }
-              >
-                {menu.label}
-              </NavLink>
-            </li>
-          ))}
+          {menuList.map((menu, i) => {
+            if (menu.subItems) {
+              return (
+                <li key={i}>
+                  <Popover>
+                    <PopoverTrigger>
+                      <button className="text-black hover:text-primary focus:outline-none">
+                        {menu.label}{" "}
+                        <ArrowDown2 size={16} className="inline-block ml-1" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[200px] p-2">
+                      <div className="flex flex-col space-y-2">
+                        {menu.subItems.map((subItem, j) => (
+                          <PopoverClose asChild key={j}>
+                            <Link
+                              to={subItem.to}
+                              className="text-sm p-2 hover:bg-primary/10 rounded-sm"
+                            >
+                              {subItem.label}
+                            </Link>
+                          </PopoverClose>
+                        ))}
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </li>
+              );
+            }
+            return (
+              <li key={i}>
+                <NavLink
+                  to={menu.to}
+                  className={({ isActive }) =>
+                    `text-black hover:text-primary ${
+                      isActive ? "text-primary font-semibold" : ""
+                    }`
+                  }
+                >
+                  {menu.label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
         {/* login Button */}
@@ -88,14 +138,7 @@ const Header = () => {
                       Profile
                     </Link>
                   </PopoverClose>
-                  <PopoverClose asChild>
-                    <Link
-                      to="#"
-                      className="text-sm flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-sm p-2 duration-300 hover:bg-primary/30 hover:bg-opacity-20"
-                    >
-                      Volunteer
-                    </Link>
-                  </PopoverClose>
+
                   <PopoverClose asChild>
                     <LogoutButton />
                   </PopoverClose>
@@ -136,20 +179,55 @@ const Header = () => {
           }`}
         >
           <div className="flex flex-col h-full w-full px-4 py-8 relative">
-            <ul className="flex flex-col space-y-10 poppins-regular pt-10">
+            <ul className="flex flex-col space-y-10 poppins-regular pt-3">
               {menuList.map((menu, i) => (
                 <li key={i}>
-                  <NavLink
-                    to={menu.to}
-                    className={({ isActive }) =>
-                      `text-black hover:text-primary ${
-                        isActive ? "text-primary font-semibold" : ""
-                      }`
-                    }
-                    onClick={toggleMenu}
-                  >
-                    {menu.label}
-                  </NavLink>
+                  {menu.subItems ? (
+                    <div>
+                      <button
+                        onClick={() => toggleAccordion(menu.label)}
+                        className="flex items-center justify-between w-full text-black hover:text-primary focus:outline-none"
+                      >
+                        <span>{menu.label}</span>
+                        {openAccordion === menu.label ? (
+                          <ArrowUp2 size={16} />
+                        ) : (
+                          <ArrowDown2 size={16} />
+                        )}
+                      </button>
+                      {openAccordion === menu.label && (
+                        <ul className="pl-4 mt-2 space-y-4">
+                          {menu.subItems.map((subItem, j) => (
+                            <li key={j} className="py-2 ">
+                              <NavLink
+                                to={subItem.to}
+                                className={({ isActive }) =>
+                                  `text-black hover:text-primary ${
+                                    isActive ? "text-primary font-semibold" : ""
+                                  }`
+                                }
+                                onClick={toggleMenu}
+                              >
+                                {subItem.label}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ) : (
+                    <NavLink
+                      to={menu.to}
+                      className={({ isActive }) =>
+                        `text-black hover:text-primary ${
+                          isActive ? "text-primary font-semibold" : ""
+                        }`
+                      }
+                      onClick={toggleMenu}
+                    >
+                      {menu.label}
+                    </NavLink>
+                  )}
                 </li>
               ))}
 
