@@ -54,7 +54,7 @@ const Header = () => {
           ))}
         </ul>
 
-        {/* Volunteer Button */}
+        {/* login Button */}
         <div className="hidden lg:flex items-center justify-end">
           {!user ? (
             <Link to="/auth/login">
@@ -62,7 +62,7 @@ const Header = () => {
                 size={"lg"}
                 className="cursor-pointer poppins-regular py-4 px-10 rounded-md"
               >
-                Volunteer
+                Login / Signup
               </Button>
             </Link>
           ) : (

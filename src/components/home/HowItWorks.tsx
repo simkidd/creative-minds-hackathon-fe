@@ -32,7 +32,7 @@ const HowItWorks = () => {
         <h3 className="text-center pb-3.5 text-[28px] poppins-semibold">
           How it works
         </h3>
-        <p className="text-center text-xl lg:text-[22px] poppins-regular">
+        <p className="text-center text-lg poppins-regular">
           Secure, Seamless, and Instant Transactions
         </p>
 

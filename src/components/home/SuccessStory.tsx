@@ -53,7 +53,7 @@ const SuccessStory = () => {
         <h3 className="text-center pb-3.5 text-[28px] poppins-semibold">
           Success Stories
         </h3>
-        <p className="text-center text-xl lg:text-[22px] poppins-regular">
+        <p className="text-center text-lg poppins-regular">
           Stories of children or families who have benefited from the platform.
         </p>
 

@@ -1,4 +1,10 @@
+import JoinUs from "@/components/about/JoinUs";
+import MisionSection from "@/components/about/MisionSection";
+import OurImpact from "@/components/about/OurImpact";
+import VisionSection from "@/components/about/VisionSection";
+import WhatWeDo from "@/components/about/WhatWeDo";
 import HelmetComp from "@/components/shared/HelmetComp";
+import PageHeader from "@/components/shared/PageHeader";
 
 const About = () => {
   return (
@@ -9,8 +15,12 @@ const About = () => {
         canonical="https://educonnect.ng/about"
       />
 
-      <h1>About Us</h1>
-      <p>We are committed to providing quality education for all Nigerians.</p>
+      <PageHeader title="About Us" />
+      <MisionSection />
+      <VisionSection />
+      <WhatWeDo />
+      <OurImpact />
+      <JoinUs />
     </div>
   );
 };

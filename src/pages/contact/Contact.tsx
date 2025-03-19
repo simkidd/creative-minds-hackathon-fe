@@ -1,4 +1,5 @@
 import HelmetComp from "@/components/shared/HelmetComp";
+import PageHeader from "@/components/shared/PageHeader";
 
 const Contact = () => {
   return (
@@ -8,7 +9,7 @@ const Contact = () => {
         description="Get in touch with EduConnect for any inquiries or support."
       />
 
-      <h1>Contact Us</h1>
+      <PageHeader title="Contact Us" />
     </div>
   );
 };

@@ -6,8 +6,8 @@ const Login = () => {
   return (
     <div>
       <HelmetComp
-        title="Login - EduConnect"
-        description="Login to your EduConnect account to access your dashboard."
+        title="Login"
+        description="Login to your account to access your dashboard."
       />
       <AuthHeadings heading="Sign In" subHeading="Sign in with your details" />
 

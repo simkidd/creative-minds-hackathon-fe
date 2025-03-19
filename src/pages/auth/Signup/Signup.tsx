@@ -7,7 +7,7 @@ const Signup = () => {
     <div>
       <HelmetComp
         title="Signup"
-        description="Create a new EduConnect account to get started."
+        description="Create a new account to get started."
       />
 
       <AuthHeadings
