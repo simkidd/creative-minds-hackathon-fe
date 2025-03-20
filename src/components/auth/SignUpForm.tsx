@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import LoadingSpinner from "../shared/LoadingSpinner";
 import { Button } from "../ui/button";
+import { useAppSelector } from "@/store/hooks";
 
 const schema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -23,6 +24,7 @@ const schema = z.object({
     .min(10, { message: "Phone number must be at least 10 digits" }),
   address: z.string().min(1, { message: "Address is required" }),
   gender: z.string().min(1, { message: "Gender is required" }),
+  role: z.enum(["user", "teacher"]),
 });
 
 export type SignupFormData = z.infer<typeof schema>;
@@ -31,6 +33,7 @@ const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { accountType } = useAppSelector((state) => state.auth);
 
   const {
     register,
@@ -40,6 +43,9 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<SignupFormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      role: accountType,
+    },
   });
 
   const signupMutation = useMutation({
@@ -58,7 +64,8 @@ const SignUpForm = () => {
   });
 
   const onSubmit = (data: SignupFormData) => {
-    signupMutation.mutate(data);
+    const formData = { ...data, role: accountType };
+    signupMutation.mutate(formData);
   };
 
   // Password validation rules
@@ -324,7 +331,7 @@ const SignUpForm = () => {
             className="w-full flex items-center justify-center gap-2 bg-white text-black py-2 px-4 rounded-md transition-colors border cursor-pointer"
           >
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
               alt="Google logo"
               className="w-5 h-5"
             />

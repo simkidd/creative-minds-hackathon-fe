@@ -145,7 +145,7 @@ const LoginForm = () => {
             className="w-full flex items-center justify-center gap-2 bg-white text-black py-2 px-4 rounded-md transition-colors border cursor-pointer"
           >
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
               alt="Google logo"
               className="w-5 h-5"
             />

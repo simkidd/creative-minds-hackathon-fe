@@ -8,7 +8,7 @@ const Footer = () => {
     return new Date().getFullYear();
   };
   return (
-    <div className="bg-primary text-white">
+    <div className="bg-primary text-white mt-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-6 py-16 gap-10">
           <div className="col-span-1 lg:col-span-2">
@@ -46,7 +46,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/resources"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Find resources
@@ -54,7 +54,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/support/help"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Request Help
@@ -62,7 +62,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/support/volunteer"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Volunteer

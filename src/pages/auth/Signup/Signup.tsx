@@ -1,8 +1,16 @@
 import AuthHeadings from "@/components/auth/AuthHeadings";
+import ChooseAccountType from "@/components/auth/ChooseAccountType";
 import SignUpForm from "@/components/auth/SignUpForm";
 import HelmetComp from "@/components/shared/HelmetComp";
+import { useAppSelector } from "@/store/hooks";
+import { useState } from "react";
 
 const Signup = () => {
+  const { accountType } = useAppSelector((state) => state.auth);
+  const [step, setStep] = useState<"choose-account" | "signup-form">(
+    "choose-account"
+  );
+
   return (
     <div>
       <HelmetComp
@@ -10,12 +18,26 @@ const Signup = () => {
         description="Create a new account to get started."
       />
 
-      <AuthHeadings
-        heading="Sign Up to Teach / Mentor"
-        subHeading="Sign up to start teaching / mentoring on edufree4all"
-      />
+      {step === "signup-form" && (
+        <AuthHeadings
+          heading={
+            accountType === "teacher"
+              ? "Sign Up to Teach / Mentor"
+              : "Sign Up as a Student"
+          }
+          subHeading={
+            accountType === "teacher"
+              ? "Sign up to start teaching / mentoring on edufree4all"
+              : "Join edufree4all as a student and start learning"
+          }
+        />
+      )}
 
-      <SignUpForm />
+      {step === "choose-account" ? (
+        <ChooseAccountType setStep={setStep} />
+      ) : (
+        <SignUpForm />
+      )}
     </div>
   );
 };

@@ -7,7 +7,7 @@ export interface IUser {
   email: string;
   phone: string;
   password: string;
-  role: string;
+  role: "user" | "teacher";
   image: string;
   courses: ICourse[];
   createdAt: Date;

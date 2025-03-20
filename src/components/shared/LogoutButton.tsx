@@ -10,7 +10,7 @@ const LogoutButton: React.FC = () => {
     <Button
       variant={"destructive"}
       onClick={logout}
-      className="cursor-pointer w-full text-sm justify-start"
+      className="cursor-pointer w-full text-sm lg:justify-start justify-center"
     >
       <LogoutCurve />
       Logout
