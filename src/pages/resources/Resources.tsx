@@ -22,19 +22,10 @@ const Resources = () => {
 
   const handleTabChange = (type: "digital" | "physical") => {
     dispatch(setResourceType(type));
-    window.location.hash = type;
   };
 
   useEffect(() => {
     dispatch(setResources(resourcesData));
-  }, [dispatch]);
-
-  useEffect(() => {
-    // Read the hash from the URL when the component mounts
-    const hash = window.location.hash.replace("#", "");
-    if (hash === "digital" || hash === "physical") {
-      dispatch(setResourceType(hash));
-    }
   }, [dispatch]);
 
   const handleSearchChange = (query: string) => {

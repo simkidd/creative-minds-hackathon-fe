@@ -2,13 +2,21 @@ import DigitalLiteracyResources from "@/components/resources/DigitalLiteracyReso
 import HelmetComp from "@/components/shared/HelmetComp";
 import PageHeadings from "@/components/shared/PageHeadings";
 import SearchInput from "@/components/shared/SearchInput";
-import { setSearchQuery } from "@/store/features/resource/resource.slice";
+import { digitalLiteracyData } from "@/data/resource.data";
+import {
+  setDigitalLiteracyResources,
+  setSearchQuery,
+} from "@/store/features/resource/resource.slice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useEffect } from "react";
 
 const DigitalLiteracy = () => {
   const dispatch = useAppDispatch();
-
   const { searchQuery } = useAppSelector((state) => state.resource);
+
+  useEffect(() => {
+    dispatch(setDigitalLiteracyResources(digitalLiteracyData));
+  }, [dispatch]);
 
   const handleSearchChange = (query: string) => {
     dispatch(setSearchQuery(query));
