@@ -46,7 +46,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/resources"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Find resources
@@ -54,7 +54,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/support/help"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Request Help
@@ -62,7 +62,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    to=""
+                    to="/support/volunteer"
                     className="hover:underline hover:underline-offset-2 transition-all duration-300"
                   >
                     Volunteer
