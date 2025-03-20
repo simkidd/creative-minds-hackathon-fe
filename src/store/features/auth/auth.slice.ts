@@ -6,6 +6,7 @@ interface AuthState {
   token: string | null;
   loading: boolean;
   error: string | null;
+  accountType: "user" | "teacher";
 }
 
 export const SLICE_NAME = "auth";
@@ -15,6 +16,7 @@ const initialState: AuthState = {
   token: null,
   loading: false,
   error: null,
+  accountType: "teacher",
 };
 
 const authSlice = createSlice({
@@ -33,16 +35,26 @@ const authSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    setAccountType: (state, action: PayloadAction<"user" | "teacher">) => {
+      state.accountType = action.payload;
+    },
     resetAuthState: (state) => {
       state.user = null;
       state.token = null;
       state.loading = false;
       state.error = null;
+      state.accountType = "teacher";
     },
   },
 });
 
-export const { setUser, setToken, setLoading, setError, resetAuthState } =
-  authSlice.actions;
+export const {
+  setUser,
+  setToken,
+  setLoading,
+  setError,
+  resetAuthState,
+  setAccountType,
+} = authSlice.actions;
 
 export default authSlice.reducer;
