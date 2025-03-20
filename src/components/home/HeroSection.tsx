@@ -1,21 +1,42 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ArrowRight } from "iconsax-react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="w-full">
+    <motion.section
+      className="w-full"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="container mx-auto px-4 py-32">
         <div className="max-w-[945px] w-full mx-auto flex items-center flex-col">
-          <h1 className="text-4xl poppins-bold pb-4 text-center">
+          <motion.h1
+            className="text-4xl poppins-bold pb-4 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
             Bridging the Education Gap in Nigeria.
-          </h1>
-          <p className="pb-8 lg:text-[22px] text-xl text-center">
+          </motion.h1>
+          <motion.p
+            className="pb-8 lg:text-[22px] text-xl text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             Access free learning materials, find volunteers, and get support for
             your education journey.
-          </p>
+          </motion.p>
 
-          <div className="flex items-center justify-center gap-8 flex-col md:flex-row w-full">
+          <motion.div
+            className="flex items-center justify-center gap-8 flex-col md:flex-row w-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
             <Link to={"/resources"} className="w-full md:w-fit">
               <Button size={"lg"} className="cursor-pointer w-full md:w-fit">
                 Find Resources
@@ -28,10 +49,10 @@ const HeroSection = () => {
             >
               Request Help <ArrowRight />
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

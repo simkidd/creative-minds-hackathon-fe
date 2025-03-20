@@ -265,7 +265,7 @@ const Header = () => {
                 <>
                   <li>
                     <NavLink
-                      to={"/profile"}
+                      to={"#"}
                       className={({ isActive }) =>
                         `text-black hover:text-primary ${
                           isActive ? "text-primary font-semibold" : ""
@@ -287,7 +287,7 @@ const Header = () => {
                         }
                         onClick={toggleMenu}
                       >
-                        Saved Items
+                        Saved Resources
                       </NavLink>
                     </li>
                   )}

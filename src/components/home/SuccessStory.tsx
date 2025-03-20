@@ -3,10 +3,11 @@ import Image3 from "@/assets/images/people/group-african-kids-learning-together_
 import Image2 from "@/assets/images/people/smiling-pupil-sitting-her-desk_13339-140893.png";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useRef } from "react";
-import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/swiper-bundle.css";
+import { NavigationOptions } from "swiper/types";
 
 interface IStory {
   name: string;
@@ -60,16 +61,24 @@ const SuccessStory = () => {
         <div className="mt-12 w-full relative">
           <Swiper
             spaceBetween={10}
-            effect={"fade"}
-            modules={[Navigation, EffectFade, Autoplay]}
+            modules={[Navigation, Autoplay]}
             navigation={{
               nextEl: nextButtonRef.current,
               prevEl: prevButtonRef.current,
             }}
             autoplay={{
-              delay: 2500,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
+            }}
+            onSwiper={(swiper) => {
+              if (swiper.params.navigation && typeof swiper.params.navigation !== "boolean") {
+                const navigation = swiper.params.navigation as NavigationOptions;
+                navigation.nextEl = nextButtonRef.current;
+                navigation.prevEl = prevButtonRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
+              }
             }}
             className="w-full h-full"
           >
