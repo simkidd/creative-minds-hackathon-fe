@@ -238,11 +238,12 @@ export const resources: IResource[] = [
 ];
 
 export const digitalLiteracyData: ILiteracy[] = [
+  // Technology Basics
   {
     id: "1",
     title: "Getting Started with Technology",
     description:
-      "Learn the basics of using a computer and keyboard, and mouse.",
+      "Learn the basics of using a computer, keyboard, and mouse.",
     videos: 3,
     pdfs: 2,
     category: "Technology Basics",
@@ -252,7 +253,7 @@ export const digitalLiteracyData: ILiteracy[] = [
     id: "2",
     title: "Basic Computer Skills",
     description:
-      "Learn about computers, how to turn on/off a computer, understanding the desktop.",
+      "Learn about computers, how to turn on/off a computer, and understand the desktop.",
     videos: 3,
     pdfs: 1,
     category: "Technology Basics",
@@ -295,6 +296,214 @@ export const digitalLiteracyData: ILiteracy[] = [
     videos: 3,
     pdfs: 1,
     category: "Technology Basics",
+    image: Image,
+  },
+
+  // Internet Basics
+  {
+    id: "7",
+    title: "Introduction to the Internet",
+    description:
+      "What is the internet, how does it work, and why is it important?",
+    videos: 2,
+    pdfs: 1,
+    category: "Internet Basics",
+    image: Image,
+  },
+  {
+    id: "8",
+    title: "Using Web Browsers",
+    description:
+      "How to use browsers like Chrome, Firefox, and Safari to navigate the web.",
+    videos: 3,
+    pdfs: 2,
+    category: "Internet Basics",
+    image: Image,
+  },
+  {
+    id: "9",
+    title: "Searching the Web",
+    description:
+      "How to use search engines like Google effectively to find information.",
+    videos: 2,
+    pdfs: 1,
+    category: "Internet Basics",
+    image: Image,
+  },
+  {
+    id: "10",
+    title: "Online Safety and Security",
+    description:
+      "How to stay safe online, recognize scams, and protect your personal information.",
+    videos: 4,
+    pdfs: 2,
+    category: "Internet Basics",
+    image: Image,
+  },
+  {
+    id: "11",
+    title: "Understanding URLs and Websites",
+    description:
+      "What are URLs, how to navigate websites, and understanding domain names.",
+    videos: 2,
+    pdfs: 1,
+    category: "Internet Basics",
+    image: Image,
+  },
+
+  // Productivity Tools
+  {
+    id: "12",
+    title: "Introduction to Microsoft Word",
+    description:
+      "Learn how to create, edit, and format documents using Microsoft Word.",
+    videos: 4,
+    pdfs: 2,
+    category: "Productivity Tools",
+    image: Image,
+  },
+  {
+    id: "13",
+    title: "Getting Started with Excel",
+    description:
+      "Basics of Excel, including creating spreadsheets and using formulas.",
+    videos: 5,
+    pdfs: 3,
+    category: "Productivity Tools",
+    image: Image,
+  },
+  {
+    id: "14",
+    title: "Using Google Docs",
+    description:
+      "How to create and share documents online using Google Docs.",
+    videos: 3,
+    pdfs: 2,
+    category: "Productivity Tools",
+    image: Image,
+  },
+  {
+    id: "15",
+    title: "Introduction to PowerPoint",
+    description:
+      "Learn how to create and present slideshows using Microsoft PowerPoint.",
+    videos: 4,
+    pdfs: 2,
+    category: "Productivity Tools",
+    image: Image,
+  },
+  {
+    id: "16",
+    title: "Time Management Tools",
+    description:
+      "How to use tools like calendars and task managers to stay organized.",
+    videos: 3,
+    pdfs: 1,
+    category: "Productivity Tools",
+    image: Image,
+  },
+
+  // Digital Communication
+  {
+    id: "17",
+    title: "Introduction to Email",
+    description:
+      "How to create an email account, send/receive emails, and manage your inbox.",
+    videos: 3,
+    pdfs: 2,
+    category: "Digital Communication",
+    image: Image,
+  },
+  {
+    id: "18",
+    title: "Using Social Media",
+    description:
+      "How to use platforms like Facebook, Twitter, and Instagram to connect with others.",
+    videos: 4,
+    pdfs: 2,
+    category: "Digital Communication",
+    image: Image,
+  },
+  {
+    id: "19",
+    title: "Video Conferencing Basics",
+    description:
+      "How to use tools like Zoom and Microsoft Teams for online meetings.",
+    videos: 3,
+    pdfs: 1,
+    category: "Digital Communication",
+    image: Image,
+  },
+  {
+    id: "20",
+    title: "Online Etiquette",
+    description:
+      "Best practices for communicating online, including email and social media.",
+    videos: 2,
+    pdfs: 1,
+    category: "Digital Communication",
+    image: Image,
+  },
+  {
+    id: "21",
+    title: "Introduction to Messaging Apps",
+    description:
+      "How to use apps like WhatsApp and Telegram to communicate with others.",
+    videos: 3,
+    pdfs: 1,
+    category: "Digital Communication",
+    image: Image,
+  },
+
+  // Digital Literacy for Teachers
+  {
+    id: "22",
+    title: "Using Technology in the Classroom",
+    description:
+      "How to integrate technology into teaching and learning activities.",
+    videos: 4,
+    pdfs: 2,
+    category: "Digital Literacy for Teachers",
+    image: Image,
+  },
+  {
+    id: "23",
+    title: "Creating Digital Lesson Plans",
+    description:
+      "How to design and share lesson plans using digital tools.",
+    videos: 3,
+    pdfs: 1,
+    category: "Digital Literacy for Teachers",
+    image: Image,
+  },
+  {
+    id: "24",
+    title: "Online Assessment Tools",
+    description:
+      "How to use tools like Google Forms and Kahoot for online assessments.",
+    videos: 3,
+    pdfs: 2,
+    category: "Digital Literacy for Teachers",
+    image: Image,
+  },
+  {
+    id: "25",
+    title: "Digital Resources for Teachers",
+    description:
+      "Where to find and how to use digital resources like eBooks and videos.",
+    videos: 4,
+    pdfs: 2,
+    category: "Digital Literacy for Teachers",
+    image: Image,
+  },
+  {
+    id: "26",
+    title: "Teaching Online Safety",
+    description:
+      "How to educate students about online safety and digital citizenship.",
+    videos: 3,
+    pdfs: 1,
+    category: "Digital Literacy for Teachers",
     image: Image,
   },
 ];
