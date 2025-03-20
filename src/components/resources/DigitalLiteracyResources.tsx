@@ -20,7 +20,9 @@ const DigitalLiteracyResources = ({ searchQuery }: { searchQuery: string }) => {
     (state) => state.resource
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>("Technology Basics");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    "Technology Basics"
+  );
 
   const filteredResources = digitalLiteracyResources?.filter((resource) => {
     const matchesSearchQuery =

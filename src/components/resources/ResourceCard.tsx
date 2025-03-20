@@ -1,10 +1,11 @@
 import { IResource } from "@/interfaces/resource.interface";
+import { Import } from "iconsax-react";
+import { BookmarkIcon, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 import { ScrollArea } from "../ui/scroll-area";
-import { Import } from "iconsax-react";
-import { X } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 interface ResourceCardProps {
   resource: IResource;
@@ -13,7 +14,19 @@ const ResourceCard = ({ resource }: ResourceCardProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-sm transition-shadow duration-300">
+    <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-sm transition-shadow duration-300 relative">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant={"outline"}
+            size={"icon"}
+            className="absolute right-4 bottom-4 cursor-pointer"
+          >
+            <BookmarkIcon />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="left">Save for later</TooltipContent>
+      </Tooltip>
       <div className="p-4 pb-0">
         <div
           className="aspect-square rounded-md bg-gray-100 overflow-hidden
@@ -48,7 +61,7 @@ const ResourceCard = ({ resource }: ResourceCardProps) => {
         <div className="mt-4 flex justify-center">
           <Button
             variant={"outline"}
-            size={'lg'}
+            size={"lg"}
             className="cursor-pointer px-10"
             onClick={() => setOpen(true)}
           >

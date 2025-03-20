@@ -4,15 +4,28 @@ import { ILiteracy } from "@/interfaces/resource.interface";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 import { ScrollArea } from "../ui/scroll-area";
-import { X } from "lucide-react";
+import { BookmarkIcon, X } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const DigitalLiteracyCard = ({ item }: { item: ILiteracy }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border border-gray-100 rounded-lg overflow-hidden hover:shadow-sm transition-shadow duration-300 bg-[#f8f8f8] p-6 flex flex-col">
+    <div className="border border-gray-100 rounded-lg overflow-hidden hover:shadow-sm transition-shadow duration-300 bg-[#f8f8f8] p-6 flex flex-col relative">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant={"outline"}
+            size={"icon"}
+            className="absolute right-6 bottom-6 cursor-pointer"
+          >
+            <BookmarkIcon />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="left">Save for later</TooltipContent>
+      </Tooltip>
       <div className="bg-white size-[60px] rounded-full flex items-center justify-center mb-[25px]">
-        <MonitorMobbile />
+        <MonitorMobbile className="text-primary" />
       </div>
 
       <h4 className="text-lg poppins-medium mb-2">{item.title}</h4>

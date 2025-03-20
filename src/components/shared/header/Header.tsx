@@ -1,7 +1,7 @@
 import LogoImg from "@/assets/logos/edufreelogo.png";
 import { useAppSelector } from "@/store/hooks";
 import { PopoverClose } from "@radix-ui/react-popover";
-import { ArrowDown2, ArrowUp2, Profile } from "iconsax-react";
+import { ArrowDown2, ArrowUp2, BookSaved, Profile } from "iconsax-react";
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
@@ -14,6 +14,7 @@ interface IMenu {
   label: string;
   to: string;
   subItems?: IMenu[];
+  roles?: string[];
 }
 
 const menuList: IMenu[] = [
@@ -141,6 +142,10 @@ const Header = () => {
                 </button>
               </PopoverTrigger>
               <PopoverContent className="w-[208px] p-2.5 px-1.5">
+                <div className="px-2 pb-1 text-sm text-neutral-500">
+                  Signed in as{" "}
+                  {user?.role === "teacher" ? "Teacher" : "Student"}
+                </div>
                 <div className="flex flex-col space-y-1 poppins-regular">
                   <PopoverClose asChild>
                     <Link
@@ -151,6 +156,18 @@ const Header = () => {
                       Profile
                     </Link>
                   </PopoverClose>
+
+                  {user?.role === "user" && (
+                    <PopoverClose asChild>
+                      <Link
+                        to="#"
+                        className="text-sm flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-sm p-2 duration-300 hover:bg-primary/30 hover:bg-opacity-20"
+                      >
+                        <BookSaved size="18" />
+                        Saved Resources
+                      </Link>
+                    </PopoverClose>
+                  )}
 
                   <PopoverClose asChild>
                     <LogoutButton />
@@ -259,22 +276,25 @@ const Header = () => {
                       Profile
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      to={"/volunteer"}
-                      className={({ isActive }) =>
-                        `text-black hover:text-primary ${
-                          isActive ? "text-primary font-semibold" : ""
-                        }`
-                      }
-                      onClick={toggleMenu}
-                    >
-                      Volunteer
-                    </NavLink>
-                  </li>
+                  {user?.role === "user" && (
+                    <li>
+                      <NavLink
+                        to={"#"}
+                        className={({ isActive }) =>
+                          `text-black hover:text-primary ${
+                            isActive ? "text-primary font-semibold" : ""
+                          }`
+                        }
+                        onClick={toggleMenu}
+                      >
+                        Saved Items
+                      </NavLink>
+                    </li>
+                  )}
                 </>
               )}
             </ul>
+
             <div className="mt-auto">
               {!user ? (
                 <Link to="/auth/login">

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { fetchUser, loginUser } from "@/lib/api/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import cookies from "js-cookie";
 import { TOKEN_NAME } from "@/constants/app.constant";
 import { useAppDispatch } from "@/store/hooks";
@@ -10,6 +10,7 @@ import { setToken, setUser } from "@/store/features/auth/auth.slice";
 export const useLogin = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const loginMutation = useMutation({
     mutationFn: loginUser,
@@ -22,7 +23,7 @@ export const useLogin = () => {
       // Fetch the user data after login
       try {
         const userData = await fetchUser();
-        console.log("fetchUser", userData)
+        console.log("fetchUser", userData);
         if (userData) {
           dispatch(setUser(userData));
         }
@@ -30,7 +31,9 @@ export const useLogin = () => {
         console.error("Failed to fetch user data:", error);
         toast.error("Failed to fetch user data");
       }
-      navigate("/");
+
+      const from = location.state?.from?.pathname || "/";
+      navigate(from, { replace: true });
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {

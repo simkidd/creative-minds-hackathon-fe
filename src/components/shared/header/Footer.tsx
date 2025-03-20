@@ -8,7 +8,7 @@ const Footer = () => {
     return new Date().getFullYear();
   };
   return (
-    <div className="bg-primary text-white">
+    <div className="bg-primary text-white mt-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-6 py-16 gap-10">
           <div className="col-span-1 lg:col-span-2">
